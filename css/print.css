@@ -1,0 +1,253 @@
+/* Print Styles for PDF Export */
+@media print {
+    * {
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 12pt;
+        line-height: 1.4;
+        color: #000;
+        background: white;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .app-container {
+        min-height: auto;
+    }
+    
+    .app-header,
+    .input-section,
+    .header-controls,
+    .input-actions,
+    .milestone-controls,
+    .milestone-delete,
+    .add-milestone {
+        display: none !important;
+    }
+    
+    .main-content {
+        max-width: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .roadmap-section {
+        background: white;
+        border-radius: 0;
+        padding: 0;
+        box-shadow: none;
+        border: none;
+    }
+    
+    .roadmap-header {
+        margin-bottom: 20pt;
+        text-align: center;
+        border-bottom: 2pt solid #000;
+        padding-bottom: 10pt;
+    }
+    
+    .roadmap-title {
+        font-size: 18pt;
+        font-weight: bold;
+        margin: 0;
+    }
+    
+    .roadmap-container {
+        position: relative;
+    }
+    
+    .milestones-list {
+        display: block;
+        gap: 0;
+    }
+    
+    .milestone-card {
+        background: white;
+        border: 1pt solid #000;
+        border-radius: 0;
+        padding: 8pt;
+        margin-bottom: 15pt;
+        page-break-inside: avoid;
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        gap: 15pt;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Three-column layout for print */
+    .milestone-content {
+        flex: 0 0 45%;
+        width: 45%;
+        max-width: 45%;
+        padding-right: 20pt;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+    
+    .milestone-checkbox-column {
+        flex: 0 0 10%;
+        width: 10%;
+        max-width: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 4pt;
+        box-sizing: border-box;
+    }
+    
+    .milestone-notes-column {
+        flex: 0 0 45%;
+        width: 45%;
+        max-width: 45%;
+        border-left: 1pt solid #ccc;
+        padding-left: 8pt;
+        min-height: 40pt;
+        box-sizing: border-box;
+    }
+    
+    .milestone-header {
+        margin-bottom: 4pt;
+    }
+    
+    .milestone-title {
+        font-weight: bold;
+        font-size: 12pt;
+        color: #000;
+        border: none;
+        background: transparent;
+        padding: 0;
+        margin: 0;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        hyphens: auto;
+    }
+    
+    .milestone-description {
+        font-size: 10pt;
+        color: #333;
+        border: none;
+        background: transparent;
+        padding: 0;
+        margin: 0;
+        resize: none;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        hyphens: auto;
+    }
+    
+    .milestone-footer {
+        margin-top: 4pt;
+        padding-top: 4pt;
+        border-top: 1pt solid #ccc;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .milestone-date {
+        font-size: 9pt;
+        color: #666;
+        border: none;
+        background: transparent;
+        padding: 0;
+    }
+    
+    .milestone-category {
+        font-size: 8pt;
+        padding: 2pt 4pt;
+        border: 1pt solid #000;
+        background: white;
+        color: #000;
+    }
+    
+    /* Print checkbox styling */
+    .milestone-checkbox {
+        width: 12pt;
+        height: 12pt;
+        border: 1pt solid #000;
+        background: white;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+    
+    .milestone-checkbox:checked {
+        background: #000;
+        position: relative;
+    }
+    
+    .milestone-checkbox:checked::after {
+        content: '✓';
+        position: absolute;
+        top: -2pt;
+        left: 1pt;
+        color: white;
+        font-size: 10pt;
+        font-weight: bold;
+    }
+    
+    /* Notes column lines */
+    .milestone-notes-column::before {
+        content: '';
+        display: block;
+        height: 20pt;
+        border-bottom: 1pt solid #ccc;
+        margin-bottom: 8pt;
+    }
+    
+    .milestone-notes-column::after {
+        content: '';
+        display: block;
+        height: 20pt;
+        border-bottom: 1pt solid #ccc;
+    }
+    
+    /* Remove connecting lines in print */
+    .milestone-card::before,
+    .milestone-card::after {
+        display: none;
+    }
+    
+    /* Page breaks */
+    .milestone-card {
+        page-break-inside: avoid;
+    }
+    
+    /* Page numbers */
+    @page {
+        margin: 20mm;
+        size: A4;
+    }
+    
+    .page-number {
+        position: fixed;
+        bottom: 10mm;
+        right: 20mm;
+        font-size: 10pt;
+        color: #666;
+    }
+    
+    /* Hide interactive elements */
+    .milestone-title:focus,
+    .milestone-description:focus,
+    .milestone-date:focus {
+        outline: none;
+        background: transparent;
+    }
+    
+    /* Ensure text is black */
+    .milestone-title,
+    .milestone-description,
+    .milestone-date,
+    .milestone-category {
+        color: #000 !important;
+    }
+}
