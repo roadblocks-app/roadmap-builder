@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Startup-sanakirja 2025 — Hakemisto</title>
+  <meta name="description" content="Startup-sanakirja 2025 — Selaa termejä ja lyhenteitä A:sta Z:hen. Hae termejä kuten Vesting, NRR, ARR ja paljon muuta." />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://roadblocks.app/index/" />
+  <meta property="og:title" content="Startup-sanakirja 2025 — Hakemisto" />
+  <meta property="og:description" content="Startup-sanakirja 2025 — Selaa termejä ja lyhenteitä A:sta Z:hen. Hae termejä kuten Vesting, NRR, ARR ja paljon muuta." />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://roadblocks.app/index/" />
+  <meta name="twitter:title" content="Startup-sanakirja 2025 — Hakemisto" />
+  <meta name="twitter:description" content="Startup-sanakirja 2025 — Selaa termejä ja lyhenteitä A:sta Z:hen. Hae termejä kuten Vesting, NRR, ARR ja paljon muuta." />
+
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --accent:#06b6d4; --muted:#94a3b8; --glass: rgba(255,255,255,0.03);
+      --radius:12px; --gap:12px; --maxw:980px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    html,body{height:100%;background:linear-gradient(180deg,#071022 0%, #071422 60%);color:#e6eef6;margin:0}
+    .wrap{max-width:var(--maxw);margin:16px auto;padding:16px}
+
+    header{position:sticky;top:12px;z-index:20;backdrop-filter: blur(6px);}
+    .topline{font-size:15px;color:#eaf6fb;margin-bottom:8px;font-weight:600}
+    .searchbar{display:flex;gap:8px;align-items:center;background:var(--card);padding:10px;border-radius:14px;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    .searchbar input{flex:1;background:transparent;border:0;color:inherit;font-size:16px;outline:none;padding:6px}
+    .hint{font-size:13px;color:var(--muted)}
+
+    .alphaBar{display:flex;gap:8px;margin-top:12px;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;scrollbar-color:var(--muted) transparent;padding-bottom:4px}
+    .alphaBar::-webkit-scrollbar{height:4px}
+    .alphaBar::-webkit-scrollbar-track{background:transparent}
+    .alphaBar::-webkit-scrollbar-thumb{background:var(--muted);border-radius:2px;opacity:0.3}
+    .alphaBar::-webkit-scrollbar-thumb:hover{opacity:0.5}
+    .alpha{width:48px;height:48px;min-width:48px;min-height:48px;border-radius:50%;background:var(--glass);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700;font-size:18px;cursor:pointer;border:1px solid rgba(255,255,255,0.03);flex-shrink:0}
+    .alpha.active{background:linear-gradient(180deg,var(--accent),#0ea5b7);color:#051023;box-shadow:0 6px 18px rgba(6,182,212,0.12)}
+
+    main{margin-top:14px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px;margin-bottom:12px;border:1px solid rgba(255,255,255,0.03)}
+    .letterHeading{display:flex;gap:12px;align-items:center}
+    .letterBadge{width:48px;height:48px;border-radius:999px;background:var(--glass);display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:800;font-size:18px}
+    .sectionList{margin-top:10px;display:grid;grid-template-columns:1fr;gap:8px}
+    .term{padding:10px;border-radius:10px;background:linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));display:flex;flex-direction:column;gap:6px;border:1px solid rgba(255,255,255,0.02)}
+    .term .k{font-weight:800;color:#eaf6fb;font-size:18px}
+    .term .d{font-size:13px;color:var(--muted);line-height:1.5}
+    .term .d p{margin:0 0 6px 0}
+
+    footer{margin-top:18px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* Responsive tweaks */
+    @media (min-width:820px){
+      .sectionList{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (min-width:1200px){
+      .wrap{padding:24px}
+    }
+
+    /* subtle focus */
+    .alpha:focus,.searchbar input:focus{outline:2px solid rgba(6,182,212,0.14)}
+
+    .quizzer-banner{
+      position:fixed;
+      left:50%;
+      transform:translateX(-50%);
+      bottom:10px;
+      z-index:40;
+      display:inline-flex;
+      gap:4px;
+      align-items:center;
+      background:rgba(5,10,20,0.92);
+      border:1px solid rgba(6,182,212,0.35);
+      border-radius:999px;
+      padding:8px 14px;
+      color:#dbeafe;
+      font-size:13px;
+      text-decoration:none;
+      box-shadow:0 8px 28px rgba(2,6,23,0.55);
+      backdrop-filter: blur(6px);
+      white-space:nowrap;
+    }
+    .quizzer-banner strong{
+      color:#67e8f9;
+      text-decoration:underline;
+      text-underline-offset:2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div id="topline" class="topline" aria-live="polite"></div>
+      <div class="searchbar" role="search">
+        <input id="search" type="search" placeholder="Hae termiä tai selitystä esim. Vesting, NRR..." aria-label="Haku" />
+        <div class="hint">A–Z</div>
+      </div>
+      <div class="alphaBar" id="alphaBar" aria-hidden="false"></div>
+    </header>
+
+    <main id="content"></main>
+
+    <footer>Startup-sanakirja 2025 — Termit ja lyhenteet. Selaa kirjainta tai hae. Tehty mobiilille.</footer>
+  </div>
+  <a class="quizzer-banner" href="https://quizzer.roadblocks.app">
+    Want to learn these <strong>fast</strong>?
+  </a>
+
+<script>
+// Data: array of {letter, key, en, fi}
+const TERMS = [
+  // --- A ---
+  {letter:'A', key:'A/B Test', en:'A controlled experiment comparing two versions of a page or feature to see which performs better.', fi:'Kahden version vertailu konversioiden optimointiin.'},
+  {letter:'A', key:'Acceleration (Single/Double Trigger)', en:'A clause that speeds up vesting on specified events. Single = acquisition; Double = acquisition plus termination.', fi:'Vestingin nopeutus. Single = yrityskaupassa; Double = yrityskauppa + irtisanominen.'},
+  {letter:'A', key:'ACV — Annual Contract Value', en:'The annualized revenue value of a contract with a customer.', fi:'Asiakassopimuksen vuosiarvo.'},
+  {letter:'A', key:'AARRR — Acquisition, Activation, Retention, Revenue, Referral', en:'A growth funnel framework that tracks user lifecycle stages from acquisition to referral.', fi:'Growth hacking -malli.'},
+  {letter:'A', key:'AIF — Alternative Investment Fund', en:'A regulated fund type for non-traditional investments like venture or private equity.', fi:'Rahaston juridinen luokitus.'},
+  {letter:'A', key:'Anti-Dilution', en:'Contractual protection that adjusts investor conversion terms to limit dilution in down rounds.', fi:'Suoja down roundeissa. Esim. Full Ratchet tai Weighted Average.'},
+  {letter:'A', key:'ARR — Annual Recurring Revenue', en:'Normalized recurring revenue on an annual basis (MRR × 12 for simple cases).', fi:'SaaS-liikevaihto vuodessa.'},
+  {letter:'A', key:'AS — Authorized Shares', en:'The maximum number of shares a company is authorized to issue, per its articles.', fi:'Suurin sallittu osakemäärä yhtiöjärjestyksessä.'},
+
+  // --- B ---
+  {letter:'B', key:'Bad Leaver', en:'A departing employee who loses unvested shares or faces penalties due to contract breaches.', fi:'Lähtijä menettää vestautumattomat tai jopa vestatut osakkeet (esim. rikkomus, kilpailukielto).'},
+  {letter:'B', key:'Benchmarking', en:'Comparing your KPIs to industry standards to identify strengths and weaknesses.', fi:'Vertailu alan normaaleihin KPI-arvoihin.'},
+  {letter:'B', key:'Board Observer Rights', en:'Right for an investor to attend board meetings without voting power.', fi:'Sijoittajalla oikeus osallistua hallitukseen ilman äänivaltaa.'},
+  {letter:'B', key:'BOM — Bill of Materials', en:'A list of components and costs required to build a hardware product.', fi:'Hardware-tuotteen materiaalilista.'},
+  {letter:'B', key:'Bootstrapping', en:'Growing a company using internal cash flow and limited external funding.', fi:'Kasvu ilman ulkopuolista rahoitusta.'},
+  {letter:'B', key:'Burn / Burn Rate', en:'The rate at which a company is spending its cash reserves, usually per month.', fi:'Kassankulutus per kuukausi.'},
+  {letter:'B', key:'Burn Multiple', en:'Net cash burned divided by net new ARR — a measure of capital efficiency for growth.', fi:'Kuinka tehokkaasti burn muuttuu ARR-kasvuksi (net burn / uusi ARR).'},
+
+  // --- C ---
+  {letter:'C', key:'CAGR — Compound Annual Growth Rate', en:'The annual growth rate over multiple periods assuming compounding.', fi:'Keskimääräinen vuotuinen kasvu prosentteina.'},
+  {letter:'C', key:'CAC — Customer Acquisition Cost', en:'Average cost to acquire a customer, including marketing and sales expenses.', fi:'Asiakkaan hankinnan kustannus.'},
+  {letter:'C', key:'CAC Payback Period', en:'The time it takes for the contribution margin from a customer to cover the CAC.', fi:'Kuinka nopeasti hankintakulu maksaa itsensä takaisin.'},
+  {letter:'C', key:'Cap Table (Capitalization Table)', en:'A table showing ownership, option pools, and securities outstanding.', fi:'Omistus-, optio- ja diluutiotaulukko.'},
+  {letter:'C', key:'Capital Call', en:'A request by a fund to investors to contribute committed capital.', fi:'Rahaston vaatima lisäpanostus LP:iltä.'},
+  {letter:'C', key:'CDA / NDA — Confidentiality / Non-Disclosure Agreement', en:'A legal agreement to keep shared information confidential.', fi:'Salassapitosopimus.'},
+  {letter:'C', key:'Cliff', en:'A vesting feature where no options vest until a specified period has passed (e.g., 12 months).', fi:'Vesting alkaa vasta tietyn ajan jälkeen (tyypillisesti 12 kk).'},
+  {letter:'C', key:'Clawback', en:'Contractual mechanism for repurchasing equity in certain leave or misconduct situations.', fi:'Yhtiö voi ostaa osuuksia takaisin esimerkiksi leaver-tilanteissa.'},
+  {letter:'C', key:'CMGR — Compound Monthly Growth Rate', en:'Monthly growth rate compounded over multiple months.', fi:'Kuukausikasvu, laskettu korkoa korolle.'},
+  {letter:'C', key:'Convertible Note', en:'A loan that converts into equity at a future financing round under preset terms.', fi:'Laina, joka muuttuu osakkeiksi tulevalla kierroksella.'},
+  {letter:'C', key:'CSAT — Customer Satisfaction Score', en:'A metric indicating customer satisfaction, typically collected via survey.', fi:'Asiakastyytyväisyysmittari.'},
+  {letter:'C', key:'Churn', en:'The rate at which customers or revenue are lost during a period.', fi:'Asiakashävikki tai liikevaihdon menetys.'},
+
+  // --- D ---
+  {letter:'D', key:'DAU / WAU / MAU', en:'Daily/Weekly/Monthly Active Users — measures engagement over different horizons.', fi:'Aktiiviset käyttäjät päivittäin/viikoittain/kuukausittain.'},
+  {letter:'D', key:'DCF — Discounted Cash Flow', en:'Valuation method discounting expected future cash flows to present value.', fi:'Valuaatiomalli tulevien kassavirtojen nykyarvosta.'},
+  {letter:'D', key:'DD — Due Diligence', en:'Comprehensive review process by investors before closing an investment.', fi:'Sijoittajan tekemä yritystarkastus.'},
+  {letter:'D', key:'Dilution', en:'Reduction in ownership percentage after new shares are issued.', fi:'Omistuksen laimeneminen uusien osakkeiden myötä.'},
+  {letter:'D', key:'Drag-Along', en:'Right that forces minority shareholders to join a sale approved by a majority.', fi:'Enemmistö voi pakottaa vähemmistön mukaan myyntiin samoilla ehdoilla.'},
+  {letter:'D', key:'Down Round', en:'A financing round at a lower valuation than a prior round.', fi:'Rahoituskierros alemmalla valuaatiolla kuin edellinen; antidiluutio voi aktivoitua.'},
+
+  // --- E (expanded with EBITDA variants included) ---
+  {letter:'E', key:'EBITDA — Earnings Before Interest, Taxes, Depreciation and Amortization', en:'Operating profit before financing costs, taxes and non-cash depreciation/amortization.', fi:'Tulos ennen korkoja, veroja sekä poistoja ja arvonalentumisia.'},
+  {letter:'E', key:'Adjusted EBITDA', en:'EBITDA adjusted for one-time, non-operational or unusual items to better reflect recurring performance.', fi:'Oikaistu EBITDA ei-toistuvilla tai kertaluonteisilla erillä oikaistuna.'},
+  {letter:'E', key:'EBIT — Earnings Before Interest and Taxes', en:'Profit after depreciation and amortization but before interest and tax expenses.', fi:'Tulos ennen korkoja ja veroja.'},
+  {letter:'E', key:'EBITA — Earnings Before Interest, Taxes and Amortization', en:'Profit excluding amortization but including depreciation.', fi:'Tulos ennen korkoja, veroja ja aineettomien hyödykkeiden poistoja.'},
+  {letter:'E', key:'EBITDAR — EBITDA Before Rent', en:'EBITDA adding back rent expense to normalize businesses with heavy lease costs.', fi:'EBITDA ennen vuokrakuluja.'},
+  {letter:'E', key:'EBITDARM — EBITDA Before Rent and Management Fees', en:'EBITDA before rent and management/royalty fees, common in hospitality/healthcare.', fi:'EBITDA ennen vuokria ja hallinnointipalkkioita.'},
+  {letter:'E', key:'EBITDAX — EBITDA Excluding Exploration Costs', en:'EBITDA excluding exploration & appraisal costs (used in oil & gas).', fi:'EBITDA ilman etsintäkuluja.'},
+  {letter:'E', key:'EBITDAaL — EBITDA After Leases', en:'EBITDA adjusted to reflect lease accounting under IFRS-16.', fi:'EBITDA vuokrien IFRS-16 -käsittelyn jälkeen.'},
+  {letter:'E', key:'Cash EBITDA', en:'EBITDA adjusted to reflect cash nature of the business, sometimes deducting capex to approximate cash operating earnings.', fi:'Kassavirtaan perustuva EBITDA, jossa voidaan vähentää capex.'},
+  {letter:'E', key:'Employee Productivity', en:'Metric that measures workforce output relative to hours worked or headcount.', fi:'Työvoiman tuottavuus. Kaava: Tuottavat tunnit / Työtunnit.'},
+  {letter:'E', key:'Employee Engagement', en:'Degree to which employees are committed, motivated and satisfied at work.', fi:'Työntekijöiden sitoutuneisuus ja tyytyväisyys.'},
+  {letter:'E', key:'Employee Turnover Rate', en:'Percentage of employees leaving during a period. Formula: (Employees left / Average headcount) × 100.', fi:'Henkilöstön vaihtuvuus. Kaava: Lähteneet työntekijät / Keskimääräinen työntekijämäärä * 100.'},
+  {letter:'E', key:'Equity Financing', en:'Raising capital by selling shares to investors.', fi:'Osakepohjainen rahoitus.'},
+  {letter:'E', key:'ESOP — Employee Stock Option Plan', en:'Program that grants employees the option to purchase company shares over time.', fi:'Henkilöstön optio-ohjelma.'},
+  {letter:'E', key:'Exercise Price / Strike Price', en:'Price at which an option holder can buy the underlying share.', fi:'Optioiden lunastushinta.'},
+  {letter:'E', key:'Exit', en:'A liquidity event for investors and founders, such as M&A or IPO.', fi:'Yrityskauppa, listautuminen tai muu likviditeettitapahtuma.'},
+
+  // --- F ---
+  {letter:'F', key:'FDD — Financial Due Diligence', en:'Deep dive into financial statements and controls before a deal.', fi:'Taloudellinen due diligence -tarkastus.'},
+  {letter:'F', key:'FMV — Fair Market Value', en:'Price that a willing buyer would pay a willing seller in an arm’s-length transaction.', fi:'Käypä arvo, käytetään optioiden verotuksessa.'},
+  {letter:'F', key:'FOMO — Fear of Missing Out', en:'Investor behavior driven by the desire not to miss high-return opportunities.', fi:'Sijoittajien kilpailutilannetta kuvaava termi.'},
+  {letter:'F', key:'Founder Lock-Up', en:'A period after IPO during which founders cannot sell shares.', fi:'Ajanjakso, jolloin perustaja ei saa myydä osakkeitaan.'},
+  {letter:'F', key:'Fully Diluted Shares', en:'Total number of shares outstanding including options, convertibles and warrants.', fi:'Osakemäärä sisältäen optiot, konvertit, warrantit yms.'},
+
+  // --- G ---
+  {letter:'G', key:'GM — Gross Margin', en:'Percentage of revenue remaining after COGS are deducted. Formula: (Revenue − COGS) / Revenue.', fi:'Bruttokate, myyntien jälkeiset muuttuvat kustannukset vähennettynä.'},
+  {letter:'G', key:'GMV — Gross Merchandise Value', en:'Total value of goods sold through a marketplace in a period.', fi:'Markkinapaikan kautta kulkeva kokonaismyyntivolyymi.'},
+  {letter:'G', key:'Good Leaver', en:'Employee leaving under acceptable circumstances and typically retaining vested shares.', fi:'Lähtijä, joka saa yleensä pitää vestatut osakkeensa ja joskus osan vestautumattomista.'},
+
+  // --- H ---
+  {letter:'H', key:'Haircut', en:'A reduction applied to asset valuations or credit limits.', fi:'Alennus valuaatiosta tai arvon leikkaus; usein neuvottelutermi.'},
+  {letter:'H', key:'Hurdle Rate', en:'Minimum return required by an investor or fund before performance fees are paid.', fi:'Rahaston minimituottovaatimus ennen carryn jakamista.'},
+
+  // --- I ---
+  {letter:'I', key:'Information Rights', en:'Investor rights to receive financial statements and reports.', fi:'Sijoittajan oikeus talousraportteihin ja muuhun informaatioon.'},
+  {letter:'I', key:'IP Assignment / IPR Transfer', en:'Transfer of intellectual property rights from founders to the company.', fi:'Tekijänoikeuksien ja keksintöjen siirto yhtiölle.'},
+  {letter:'I', key:'Invoice Processing Time', en:'The time and efficiency of processing supplier/customer invoices; shorter times improve cash flow.', fi:'Laskujen käsittelyaika ja tehokkuus.'},
+  {letter:'I', key:'Inventory Turnover', en:'How many times inventory is sold and replaced in a period. Formula: COGS / Average inventory.', fi:'Varaston kierto. Kaava: Myytyjen tuotteiden kulut / Varaston keskiarvo.'},
+  {letter:'I', key:'Interest Coverage Ratio', en:'Shows how easily a company can pay interest: EBIT / Interest expense.', fi:'Mittaa miten helposti yritys pystyy maksamaan korkokulunsa. Kaava: EBIT / Korkokulut.'},
+
+  // --- K ---
+  {letter:'K', key:'KISS — Keep It Simple Security', en:'A simple financing instrument similar to SAFE, created to simplify seed deals.', fi:'500 Startupsin kehittämä SAFE-tyyppinen instrumentti.'},
+  {letter:'K', key:'KPI — Key Performance Indicator', en:'A measurable value indicating how effectively a company is achieving key objectives.', fi:'Tärkeä suorituskykymittari.'},
+
+  // --- L ---
+  {letter:'L', key:'Lead Investor', en:'Primary investor who often sets terms for a financing round.', fi:'Kierroksen pääsijoittaja, joka usein määrittää ehdot.'},
+  {letter:'L', key:'Liquidation Preference', en:'Investor right that determines payout priority and multiple on exit.', fi:'Sijoittajan etuoikeus exit-tuotoissa (esim. 1x, 2x, participating/non-participating).'},
+  {letter:'L', key:'Lock-Up', en:'Post-IPO restriction preventing sale of shares for a set period.', fi:'Ajanjakso, jolloin osakkeita ei saa myydä (IPO:ssa tai sekundaarimarkkinassa).'},
+  {letter:'L', key:'LTV — Lifetime Value', en:'Present value of the gross profit from a customer over the entire relationship.', fi:'Asiakkaan elinkaaren arvo yritykselle.'},
+  {letter:'L', key:'LTV/CAC Ratio', en:'Measures unit economics efficiency: LTV divided by CAC; >3x often cited as healthy.', fi:'Suhdeluku, joka kertoo hankinnan kannattavuudesta; >3x suositeltu.'},
+
+  // --- M ---
+  {letter:'M', key:'MFN — Most Favored Nation Clause', en:'Clause ensuring an investor receives future terms at least as favorable as others.', fi:'Sijoittaja saa tulevaisuudessa parhaat ehdot, jos sellaisia annetaan.'},
+  {letter:'M', key:'Management Fee', en:'Annual fee charged by fund managers, typically around 2%.', fi:'Rahaston vuosittainen hallinnointipalkkio (tyypillisesti ~2%).'},
+  {letter:'M', key:'MoM — Month-over-Month Growth', en:'Percentage growth compared to the previous month.', fi:'Kuukausittainen kasvu.'},
+  {letter:'M', key:'MRR — Monthly Recurring Revenue', en:'Recurring revenue normalized to a monthly period.', fi:'Kuukausittainen toistuva liikevaihto.'},
+  {letter:'M', key:'MVP — Minimum Viable Product', en:'Most basic version of a product that allows testing of hypotheses with minimal effort.', fi:'Minimikelpoinen tuotteen versio arvon testaamiseen.'},
+  {letter:'M', key:'Magic Number (SaaS)', en:'A metric evaluating sales efficiency: incremental ARR × 4 / sales & marketing spend.', fi:'Mittari, joka arvioi kasvun tehokkuutta suhteessa myyntiin/markkinointiin.'},
+  {letter:'M', key:'MOIC — Multiple on Invested Capital', en:'Return multiple (e.g., 3×) on the invested capital.', fi:'Sijoitetun pääoman moninkertainen tuotto (esim. 3×).'},
+
+  // --- N ---
+  {letter:'N', key:'NAV — Net Asset Value', en:'Value of assets minus liabilities, often used in fund contexts.', fi:'Nettovarallisuuden arvo (rahastot/yritykset).'},
+  {letter:'N', key:'NDA — Non-Disclosure Agreement', en:'Contract to protect confidential information shared between parties.', fi:'Salassapitosopimus.'},
+  {letter:'N', key:'NPS — Net Promoter Score', en:'Measure of customer willingness to recommend, typically on a -100 to +100 scale.', fi:'Asiakastyytyväisyyden ja suosittelun mittari.'},
+  {letter:'N', key:'NRR — Net Revenue Retention', en:'Revenue retained from existing customers including expansions and churn. Formula: (Starting revenue + expansions − churn) / Starting revenue.', fi:'Nettoliikevaihdon säilyminen olemassaolevilta asiakkailta, upsell mukaan.'},
+
+  // --- O ---
+  {letter:'O', key:'OKR — Objectives & Key Results', en:'Goal-setting framework linking objectives to measurable results.', fi:'Tavoite- ja mittarikehys organisaatiolle.'},
+  {letter:'O', key:'Option Pool / ESOP Pool', en:'Shares reserved for employee incentives and recruitment.', fi:'Osakkeet varattu työntekijäoptioille.'},
+  {letter:'O', key:'OSA / SHA — Osakassopimus / Shareholders\' Agreement', en:'Agreement setting shareholder rights, transfer restrictions and governance rules.', fi:'Osakkaiden yhteiset ehdot ja oikeudet.'},
+
+  // --- P ---
+  {letter:'P', key:'P&L — Profit and Loss Statement', en:'Financial statement summarizing revenues, costs and profits for a period.', fi:'Tuloslaskelma.'},
+  {letter:'P', key:'Participating Preferred', en:'Preferred shares that participate in distributions after their liquidation preference.', fi:'Sijoittaja saa pref-palautuksen ja sen jälkeen osuuden pro rata (double dip).'},
+  {letter:'P', key:'Pay-to-Play', en:'Provision requiring investors to participate in future rounds to retain certain rights.', fi:'Ehto: sijoittajan on osallistuttava tuleviin kierroksiin säilyttääkseen oikeudet.'},
+  {letter:'P', key:'PMF — Product-Market Fit', en:'When a product satisfies market demand and shows repeatable growth.', fi:'Tilanne, jossa tuote ratkaisee asiakkaiden tärkeän ongelman ja kasvu toistettavissa.'},
+  {letter:'P', key:'PLG — Product-Led Growth', en:'Growth strategy where the product is the primary driver of user acquisition and retention.', fi:'Kasvumalli, jossa tuote itse ajaa käyttäjämuutoksen ja konversiot.'},
+  {letter:'P', key:'Post-Money / Pre-Money Valuation', en:'Company valuation after / before a financing round, respectively.', fi:'Yrityksen arvo ennen ja jälkeen sijoituksen.'},
+  {letter:'P', key:'Pro Rata Rights', en:'Investor right to participate in future financings to maintain ownership percentage.', fi:'Oikeus pitää omistusosuus seuraavissa kierroksissa.'},
+  {letter:'P', key:'POC — Proof of Concept', en:'Small-scale test to demonstrate feasibility of a product or technology.', fi:'Konseptin toimivuuden näyttö.'},
+  {letter:'P', key:'PQL — Product Qualified Lead', en:'User who demonstrates buying intent through product usage signals.', fi:'Käyttäjä, joka tuotteessa osoittaa merkkejä ostohalukkuudesta.'},
+
+  // --- Q ---
+  {letter:'Q', key:'QoQ — Quarter-over-Quarter Growth', en:'Growth comparing this quarter to the prior quarter.', fi:'Kvartaalikasvun mittari.'},
+  {letter:'Q', key:'Quick Ratio (Acid Test)', en:'(Current Assets − Inventory) / Current Liabilities — a conservative liquidity measure.', fi:'Konservatiivisempi likviditeettimittari; varasto ei lasketa mukaan.'},
+
+  // --- R ---
+  {letter:'R', key:'Run Rate (RR)', en:'Annualized revenue based on current recurring revenue (e.g., monthly revenue × 12). Useful as a quick projection.', fi:'Yhden kuukauden tai jakson perusteella vuositasolle skaalattu liikevaihto tai tulos. Kaava: Kuukausilv × 12.'},
+  {letter:'R', key:'RBF — Revenue-Based Financing', en:'Financing where repayments are a percentage of revenue until a cap is reached.', fi:'Rahoitus, jonka takaisinmaksu sidotaan liikevaihtoon.'},
+  {letter:'R', key:'ROAS — Return on Ad Spend', en:'Revenue generated per advertising dollar spent.', fi:'Mainontakampanjan tuotto suhteessa kustannuksiin.'},
+  {letter:'R', key:'ROI — Return on Investment', en:'Gain from investment relative to its cost.', fi:'Sijoitetun pääoman tuotto.'},
+  {letter:'R', key:'ROFR — Right of First Refusal', en:'Right to match an offer before the seller can accept from a third party.', fi:'Etuosto-oikeus olemassa oleville osakkaille ennen ulkopuolista myyntiä.'},
+  {letter:'R', key:'Revenue Growth', en:'Increase in revenue between periods. Formula: (Current − Previous) / Previous.', fi:'Liikevaihdon kasvu edelliseen kauteen verrattuna. Kaava: (Nykyinen – Aiempi) / Aiempi.'},
+  {letter:'R', key:'Return on Equity (ROE)', en:'Net income divided by shareholders’ equity; measures profitability relative to equity.', fi:'Mittaa voiton tuoton omalle pääomalle. Kaava: Nettotulos / Oma pääoma.'},
+  {letter:'R', key:'Return on Assets (ROA)', en:'Net income divided by total assets; shows how efficiently assets produce profit.', fi:'Tuottavuusmittari, joka kertoo tuoton suhteessa yrityksen koko varallisuuteen. Kaava: Nettotulos / Kokonaisvarat.'},
+
+  // --- S ---
+  {letter:'S', key:'SAFE — Simple Agreement for Future Equity', en:'Agreement that converts into equity at a future financing round under specified terms.', fi:'Instrumentti, joka konvertoituu osakkeiksi tulevalla kierroksella.'},
+  {letter:'S', key:'SAM / SOM / TAM', en:'Market sizing tiers: Total Addressable Market, Serviceable Available Market, Serviceable Obtainable Market.', fi:'Markkinapotentiaalin eri tasot: TAM = Total Addressable Market; SAM = Serviceable Available Market; SOM = Serviceable Obtainable Market.'},
+  {letter:'S', key:'Secondary Sale', en:'Sale of existing shares by an investor or founder rather than by the company.', fi:'Osakkeiden myynti olemassaolevan omistajan toimesta (yritys ei saa uutta pääomaa).'},
+  {letter:'S', key:'Seed / Series Rounds', en:'Different stages of venture financing from seed to later stages (A, B, C...).', fi:'Rahoituskierrosten tyypit ja vaiheet.'},
+  {letter:'S', key:'SLA — Service Level Agreement', en:'Contract specifying expected service performance levels.', fi:'Palvelutasosopimus asiakkaan ja palveluntarjoajan välillä.'},
+  {letter:'S', key:'SPA — Share Purchase Agreement', en:'Agreement documenting the sale and transfer of shares.', fi:'Osakekauppasopimus.'},
+  {letter:'S', key:'Sustainability Metrics', en:'Measures that track progress toward ESG and sustainability goals.', fi:'Vastuullisuuden ja ympäristötehokkuuden mittarit.'},
+
+  // --- T ---
+  {letter:'T', key:'Tag-Along', en:'Minority protection allowing minority holders to join a sale under the same terms.', fi:'Vähemmistön oikeus myydä omat osakkeensa samoilla ehdoilla kun enemmistö myy.'},
+  {letter:'T', key:'Term Sheet', en:'Non-binding summary of the main terms of a proposed investment.', fi:'Ei-sitova yhteenveto rahoituksen ehdoista.'},
+  {letter:'T', key:'TTV — Time to Value', en:'Time it takes a customer to realize value from a product.', fi:'Aika, jonka kuluessa asiakas kokee tuotteen arvon.'},
+
+  // --- U ---
+  {letter:'U', key:'Up Round', en:'A financing round at a higher valuation than the previous round.', fi:'Kierros, jossa valuaatio nousee edelliseen verrattuna.'},
+  {letter:'U', key:'Unit Economics', en:'Per-customer economics (e.g., CAC, LTV, contribution margin) showing sustainable profitability.', fi:'Yksikkötalouden mittarit, kuten CAC, LTV ja churn, kuvaavat asiakaskohtaisen kannattavuuden.'},
+
+  // --- V ---
+  {letter:'V', key:'VC — Venture Capital', en:'Institutional capital invested into startups and high-growth ventures.', fi:'Pääomasijoitus.'},
+  {letter:'V', key:'Vesting', en:'Schedule by which equity or options vest, e.g., 4 years with a 1-year cliff.', fi:'Optioiden tai osakkeiden kertymisaikataulu (esim. 4 vuotta, 1v cliff).'},
+  {letter:'V', key:'Veto Rights', en:'Rights that allow investors to block certain corporate actions.', fi:'Sijoittajan oikeus estää tiettyjä päätöksiä yhtiössä.'},
+
+  // --- W ---
+  {letter:'W', key:'Warrant', en:'A security giving the holder the right to purchase shares at a specified price.', fi:'Oikeus ostaa osakkeita tiettyyn hintaan tulevaisuudessa.'},
+  {letter:'W', key:'Waterfall Model', en:'Distribution model showing order and amounts paid to stakeholders on exit.', fi:'Mallinnus siitä, miten exit-varat jaetaan eri omistajaryhmien välillä.'},
+  {letter:'W', key:'WOM — Word of Mouth', en:'Organic referrals and recommendations from users/customers.', fi:'Suusanallinen suosittelu.'},
+
+  // --- X, Y, Z ---
+  {letter:'X', key:'XIRR', en:'Internal rate of return for irregular cash flows; common in portfolio performance.', fi:'Sisäisen korkokannan laajennettu laskentatapa hajautetuilla kassavirroilla.'},
+  {letter:'Y', key:'Yield', en:'Income return on an investment, often expressed as a percentage.', fi:'Tuotto sijoituksesta prosentteina.'},
+  {letter:'Z', key:'ZOPA — Zone of Possible Agreement', en:'Range in negotiation where both parties can find acceptable terms.', fi:'Neuvotteluiden mahdollinen yhtymäalue.'},
+
+  // --- Financial Ratios & Valuation (some additional / cross letters) ---
+  {letter:'C', key:'Current Ratio', en:'Current Assets / Current Liabilities — measures short-term liquidity.', fi:'Mittaa yrityksen kykyä kattaa lyhytaikaiset velat. Kaava: Lyhytaikaiset varat / Lyhytaikaiset velat.'},
+  {letter:'C', key:'Cash Ratio', en:'(Cash + Marketable Securities) / Current Liabilities — most conservative liquidity measure.', fi:'Käteissuhde: (Rahavarat + helposti realisoitavat sijoitukset) / Lyhytaikaiset velat.'},
+  {letter:'D', key:'Debt-to-Equity Ratio', en:'Total Debt / Shareholders’ Equity — a leverage metric.', fi:'Yrityksen velkaisuuden suhde omaan pääomaan. Kaava: Velat / Oma pääoma.'},
+  {letter:'D', key:'Debt-to-Assets Ratio', en:'Total Debt / Total Assets — proportion of assets financed by debt.', fi:'Velkojen suhde kokonaisvaroihin.'},
+  {letter:'I', key:'Inventory Turnover (days)', en:'Indicates how quickly inventory is sold; often presented in days = 365 / (COGS / Avg Inventory).', fi:'Varaston kiertonopeus (päivissä). Kaava: 365 / (COGS / Varaston keskiarvo).'},
+  {letter:'F', key:'Fixed Asset Turnover', en:'Revenue / Net Fixed Assets — measures efficiency of property, plant & equipment.', fi:'Kuinka tehokkaasti yritys käyttää käyttöomaisuutta tuottaakseen liikevaihtoa. Kaava: Liikevaihto / Käyttöomaisuus.'},
+  {letter:'P', key:'P/E Ratio', en:'Market Price per Share / Earnings per Share — valuation multiple.', fi:'Osakkeen hinta suhteessa osakekohtaiseen tulokseen.'},
+  {letter:'P', key:'P/B Ratio', en:'Market Price / Book Value per Share — another valuation measure.', fi:'Markkina-arvo suhteessa kirjanpitoarvoon per osake.'},
+  {letter:'E', key:'EV/EBITDA', en:'Enterprise Value / EBITDA — widely used valuation multiple.', fi:'Yritysarvo suhteessa EBITDA:han.'},
+  {letter:'R', key:'Rule of 40', en:'SaaS heuristic: Revenue growth rate (%) + profit margin (%) >= 40 indicates a healthy balance between growth and profitability.', fi:'SaaS-sääntö: kasvu% + tulosmarginaali% ≥ 40.'},
+  {letter:'F', key:'Free Cash Flow (FCF)', en:'Cash generated by the business after capital expenditures: Operating Cash Flow − Capex.', fi:'Vapaa kassavirta: liiketoiminnan kassavirta − investoinnit.'},
+  {letter:'F', key:'FCF Yield', en:'Free Cash Flow / Enterprise Value — FCF relative to company value.', fi:'Vapaa kassavirta suhteessa yritysarvoon.'}
+];
+
+// Build alphabet bar
+const alphaBar = document.getElementById('alphaBar');
+const letters = Array.from(new Set(TERMS.map(t=>t.letter))).sort();
+letters.forEach(l=>{
+  const btn = document.createElement('button'); btn.className='alpha'; btn.textContent=l; btn.setAttribute('aria-label','Kirjaimeen '+l);
+  btn.addEventListener('click',()=>{filterByLetter(l);highlightAlpha(l)});
+  alphaBar.appendChild(btn);
+});
+
+function highlightAlpha(sel){
+  document.querySelectorAll('.alpha').forEach(el=>el.classList.toggle('active',el.textContent===sel));
+}
+
+// Render content grouped by letter
+const content = document.getElementById('content');
+function render(all){
+  content.innerHTML='';
+  const grouped = {};
+  all.forEach(t=>{ grouped[t.letter]=grouped[t.letter]||[]; grouped[t.letter].push(t); });
+  const sortedLetters = Object.keys(grouped).sort();
+  sortedLetters.forEach(letter=>{
+    const card = document.createElement('section'); card.className='card';
+    const h = document.createElement('div'); h.className='letterHeading';
+    h.innerHTML = `<div class='letterBadge'>${letter}</div><div><strong>${letter}</strong> — <span class='hint'>${grouped[letter].length} termiä</span></div>`;
+    card.appendChild(h);
+    const list = document.createElement('div'); list.className='sectionList';
+    grouped[letter].sort((a,b)=>a.key.localeCompare(b.key)).forEach(t=>{
+      const term = document.createElement('div'); term.className='term'; term.setAttribute('data-key',t.key.toLowerCase()); term.setAttribute('data-desc', (t.en+' '+t.fi).toLowerCase());
+      term.innerHTML = `<div class='k'>${t.key}</div><div class='d'><p>${escapeHtml(t.en)}</p><p>${escapeHtml(t.fi)}</p></div>`;
+      list.appendChild(term);
+    });
+    card.appendChild(list);
+    content.appendChild(card);
+  });
+}
+render(TERMS);
+
+// Search functionality
+const input = document.getElementById('search');
+input.addEventListener('input',e=>{
+  const q = e.target.value.trim().toLowerCase();
+  if(!q){ render(TERMS); highlightAlpha(''); updateTopline(); return; }
+  const filtered = TERMS.filter(t=> t.key.toLowerCase().includes(q) || (t.en+' '+t.fi).toLowerCase().includes(q));
+  render(filtered);
+  // highlight letter if single letter present
+  const letters = Array.from(new Set(filtered.map(f=>f.letter)));
+  if(letters.length===1) highlightAlpha(letters[0]); else highlightAlpha('');
+  updateTopline(filtered.length);
+});
+
+function filterByLetter(letter){
+  const filtered = TERMS.filter(t=>t.letter===letter);
+  render(filtered);
+  updateTopline(filtered.length);
+}
+
+// update header top-line with count + timestamp
+function updateTopline(filteredCount){
+  const count = (typeof filteredCount === 'number') ? filteredCount : TERMS.length;
+  const d = new Date();
+  const dd = String(d.getDate()).padStart(2,'0');
+  const mm = String(d.getMonth()+1).padStart(2,'0');
+  const yyyy = d.getFullYear();
+  document.getElementById('topline').textContent = `${count} Terms — Last updated: ${dd}.${mm}.${yyyy}`;
+}
+
+// HTML-escape helper
+function escapeHtml(str){
+  if(!str) return '';
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// Accessibility: focus input on load for mobile
+window.onload = ()=>{ input.focus(); updateTopline(); }
+</script>
+</body>
+</html>
