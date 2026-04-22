@@ -21,7 +21,7 @@ body {
 
 /* Header */
 .app-header {
-    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    background: linear-gradient(135deg, #111827 0%, #030712 100%);
     color: white;
     padding: 1rem 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -70,12 +70,12 @@ body {
 }
 
 .btn-primary {
-    background-color: #3b82f6;
+    background-color: #111827;
     color: white;
 }
 
 .btn-primary:hover {
-    background-color: #2563eb;
+    background-color: #1f2937;
 }
 
 .btn-secondary {
@@ -145,8 +145,8 @@ body {
 
 .text-input:focus {
     outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    border-color: #4b5563;
+    box-shadow: 0 0 0 3px rgba(75, 85, 99, 0.15);
 }
 
 .input-actions {
@@ -237,13 +237,13 @@ body {
 }
 
 .bulk-category-select:hover {
-    border-color: #3b82f6;
+    border-color: #4b5563;
 }
 
 .bulk-category-select:focus {
     outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    border-color: #4b5563;
+    box-shadow: 0 0 0 3px rgba(75, 85, 99, 0.15);
 }
 
 /* Milestone Selection Checkbox */
@@ -293,8 +293,8 @@ body {
 }
 
 .milestone-card:hover {
-    border-color: #3b82f6;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+    border-color: #4b5563;
+    box-shadow: 0 4px 12px rgba(31, 41, 55, 0.2);
 }
 
 .milestone-card.dragging {
@@ -406,7 +406,7 @@ body {
 }
 
 .phase-checkbox-label:hover {
-    color: #2563eb;
+    color: #374151;
 }
 
 .milestone-footer {
@@ -473,7 +473,7 @@ body {
     transform: translateX(-50%);
     width: 2px;
     height: 1rem;
-    background-color: #3b82f6;
+    background-color: #4b5563;
     z-index: -1;
 }
 
@@ -488,7 +488,7 @@ body {
     transform: translateX(-50%);
     width: 2px;
     height: 1rem;
-    background-color: #3b82f6;
+    background-color: #4b5563;
     z-index: -1;
 }
 
@@ -559,7 +559,7 @@ body {
 }
 
 /* Category Colors */
-.category-planning { background-color: #dbeafe; color: #1e40af; }
+.category-planning { background-color: #e5e7eb; color: #111827; }
 .category-development { background-color: #dcfce7; color: #166534; }
 .category-testing { background-color: #fef3c7; color: #92400e; }
 .category-launch { background-color: #fce7f3; color: #be185d; }
@@ -611,12 +611,12 @@ body {
 
 .progress-bar {
     height: 100%;
-    background: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%);
+    background: linear-gradient(90deg, #374151 0%, #6b7280 100%);
     border-radius: 10px;
     transition: width 0.3s ease;
 }
 
-.progress-bar.category-planning { background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%); }
+.progress-bar.category-planning { background: linear-gradient(90deg, #374151 0%, #6b7280 100%); }
 .progress-bar.category-development { background: linear-gradient(90deg, #10b981 0%, #34d399 100%); }
 .progress-bar.category-testing { background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%); }
 .progress-bar.category-launch { background: linear-gradient(90deg, #ec4899 0%, #f472b6 100%); }
@@ -626,5 +626,5 @@ body {
     text-align: right;
     font-weight: 600;
     font-size: 0.875rem;
-    color: #2563eb;
+    color: #374151;
 }

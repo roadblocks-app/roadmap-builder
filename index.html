@@ -1,133 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roadblocks.app - Drag & Drop Roadmap Builder</title>
-    <meta name="description" content="Create and organize roadmaps with drag-and-drop functionality. Export to PDF for printing.">
-    
-    <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#2563eb">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Roadblocks">
-    
-    <!-- Manifest -->
-    <link rel="manifest" href="manifest.json">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/print.css" media="print">
-    
-    <!-- External Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <style>
-      .terms-banner {
-        display: block;
-        width: 100%;
-        text-align: center;
-        padding: 6px 10px;
-        font-size: 12px;
-        border-bottom: 1px solid #1f2937;
-        color: #cbd5e1;
-        background: rgba(10, 15, 29, 0.85);
-      }
-      .terms-banner a {
-        color: #67e8f9;
-        font-weight: 600;
-        text-decoration: underline;
-        text-underline-offset: 2px;
-      }
-      .terms-banner a:hover {
-        color: #a5f3fc;
-      }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roadblocks.app - Drag & Drop Roadmap Builder</title>
+  <meta name="description" content="Create and organize roadmaps with drag-and-drop functionality. Export to PDF for printing." />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://roadblocks.app/" />
+  <meta property="og:title" content="Roadblocks.app - Drag & Drop Roadmap Builder" />
+  <meta property="og:description" content="Create and organize roadmaps with drag-and-drop functionality. Export to PDF for printing." />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://roadblocks.app/" />
+  <meta name="twitter:title" content="Roadblocks.app - Drag & Drop Roadmap Builder" />
+  <meta name="twitter:description" content="Create and organize roadmaps with drag-and-drop functionality. Export to PDF for printing." />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- PWA Meta Tags -->
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Roadblocks">
+
+  <!-- Manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
+
+  <!-- External Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #f5f5f5;
+      font-family: 'Inter', sans-serif;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fadeInUp {
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
+    /* Hero styles handled in main CSS file */
+  </style>
 </head>
-<body>
-    <div class="app-container">
-        <!-- Header -->
-        <header class="app-header">
-            <div class="terms-banner">
-                Ready for VC games? <a href="https://roadblocks.app/index/index.html">Learn the terms here.</a>
-            </div>
-            <div class="header-content">
-                <h1 class="app-title">Roadblocks.app</h1>
-                <div class="header-controls">
-                    <button id="direction-toggle" class="btn btn-secondary" title="Toggle roadmap direction">
-                        <span class="direction-icon">↑</span>
-                        <span class="direction-text">Bottom to Top</span>
-                    </button>
-                    <button id="save-roadmap" class="btn btn-primary">Save</button>
-                    <button id="load-roadmap" class="btn btn-secondary">Load</button>
-                    <button id="export-pdf" class="btn btn-success">Export PDF</button>
-                </div>
-            </div>
-        </header>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Text Input Section -->
-            <section class="input-section">
-                <div class="input-container">
-                    <label for="text-input" class="input-label">
-                        Paste your AI-generated roadmap text here:
-                    </label>
-                    <textarea 
-                        id="text-input" 
-                        class="text-input" 
-                        placeholder="Example:&#10;1. Research market trends&#10;2. Create wireframes&#10;3. Develop MVP&#10;4. Launch beta version&#10;5. Gather user feedback"
-                        rows="6"
-                    ></textarea>
-                    <div class="input-actions">
-                        <button id="parse-text" class="btn btn-primary">Parse into Milestones</button>
-                        <button id="clear-all" class="btn btn-danger">Clear All</button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Roadmap Section -->
-            <section class="roadmap-section">
-                <div class="roadmap-header">
-                    <h2 id="roadmap-title" class="roadmap-title">My Roadmap</h2>
-                    <input type="text" id="title-input" class="title-input" value="My Roadmap" style="display: none;">
-                </div>
-                
-                <div class="bulk-actions-toolbar">
-                    <div class="bulk-actions-content">
-                        <label class="bulk-checkbox-label">
-                            <input type="checkbox" id="select-all-checkbox" class="bulk-checkbox">
-                            <span>Select All</span>
-                        </label>
-                        <select id="bulk-category-select" class="bulk-category-select">
-                            <option value="">Change All Categories To...</option>
-                            <option value="planning">Planning</option>
-                            <option value="development">Development</option>
-                            <option value="testing">Testing</option>
-                            <option value="launch">Launch</option>
-                        </select>
-                        <button id="mark-selected-complete" class="btn btn-success">Mark Selected as Completed</button>
-                    </div>
-                </div>
-                
-                <div id="roadmap-container" class="roadmap-container">
-                    <div id="milestones-list" class="milestones-list">
-                        <!-- Milestones will be dynamically added here -->
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Hidden file input for loading -->
-        <input type="file" id="file-input" accept=".json" style="display: none;">
+<body class="bg-neutral-950 text-neutral-100">
+  <div class="w-full border-b border-neutral-800 bg-neutral-900/80">
+    <div class="max-w-4xl mx-auto px-6 py-2 text-center text-xs md:text-sm text-neutral-300">
+      Ready for VC games?
+      <a
+        href="https://roadblocks.app/index/index.html"
+        class="text-cyan-300 hover:text-cyan-200 underline underline-offset-2 font-semibold transition"
+      >
+        Learn the terms here.
+      </a>
     </div>
+  </div>
 
-    <!-- Scripts -->
-    <script src="js/app.js"></script>
-    <script src="js/parser.js"></script>
-    <script src="js/dragdrop.js"></script>
-    <script src="js/storage.js"></script>
-    <script src="js/pdf-export.js"></script>
+  <!-- HERO SECTION -->
+  <section class="hero-section max-w-4xl mx-auto px-6 py-16 md:py-24 bg-neutral-950 text-neutral-100">
+    <div class="hero-content opacity-0 animate-fadeInUp text-center md:text-left">
+      <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+        Chop your roadmap into blocks. Drag 'em. Drop 'em. Print 'em. Ship something already.
+      </h1>
+      
+      <p class="text-lg md:text-xl text-neutral-400 mb-12 leading-relaxed">
+        You know that "AI-generated roadmap" you swore you'd use? Yeah, it's still sitting in your downloads folder.<br><br>
+        Roadblocks.app gives it a second chance — by slicing it into milestones you can actually move around like a kid with too much coffee and a box of LEGOs.
+      </p>
+
+      <div class="how-it-works mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold mb-8">Here's how it goes down</h2>
+        <ol class="space-y-6 text-left max-w-2xl">
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-8 h-8 bg-neutral-800 border border-neutral-700 rounded-full flex items-center justify-center font-bold text-neutral-300">1</span>
+            <div>
+              <strong class="text-neutral-200">Paste your junk</strong> — dump your text, roadmap, brain vomit, whatever.
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-8 h-8 bg-neutral-800 border border-neutral-700 rounded-full flex items-center justify-center font-bold text-neutral-300">2</span>
+            <div>
+              <strong class="text-neutral-200">Auto-chop magic</strong> — each line becomes a draggable block.
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-8 h-8 bg-neutral-800 border border-neutral-700 rounded-full flex items-center justify-center font-bold text-neutral-300">3</span>
+            <div>
+              <strong class="text-neutral-200">Drag, drop, reshuffle</strong> — rearrange your future and set deadlines like a boss with commitment issues.
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-8 h-8 bg-neutral-800 border border-neutral-700 rounded-full flex items-center justify-center font-bold text-neutral-300">4</span>
+            <div>
+              <strong class="text-neutral-200">Save or print</strong> — stash it on your machine or slap it on the fridge next to last week's grocery list of unfulfilled dreams.
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="why-it-exists">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6">Why it exists</h2>
+        <p class="text-lg text-neutral-400 mb-6 leading-relaxed">
+          Because not every dreamer wants to:
+        </p>
+        <ul class="space-y-3 text-left max-w-2xl list-none">
+          <li class="flex items-start gap-3">
+            <span class="text-neutral-500 mt-1">•</span>
+            <span class="text-neutral-300">Hand over their ideas to some cloud server in Delaware, or</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-neutral-500 mt-1">•</span>
+            <span class="text-neutral-300">Pay $19/month for a "productivity suite" that sends reminders to do stuff you'll ignore anyway.</span>
+          </li>
+        </ul>
+        <p class="text-lg text-neutral-300 mt-8 font-semibold">
+          This thing runs right in your browser, saves nowhere but your computer, and costs zero.<br>
+          <span class="text-neutral-400">No signup. No tracking. No BS.</span>
+        </p>
+      </div>
+
+      <div class="perfect-for-section mt-12 mb-8 flex flex-col md:flex-row gap-8 items-start">
+        <div class="perfect-for-content flex-1">
+          <h3 class="text-xl md:text-2xl font-bold mb-6 text-center md:text-left">Perfect for</h3>
+          <ul class="space-y-3 text-left max-w-2xl list-none">
+            <li class="flex items-start gap-3">
+              <span class="text-neutral-500 mt-1">•</span>
+              <span class="text-neutral-300">Solo builders and side-project junkies</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-neutral-500 mt-1">•</span>
+              <span class="text-neutral-300">Freelancers juggling chaos</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-neutral-500 mt-1">•</span>
+              <span class="text-neutral-300">Tinfoil-hat geniuses with trust issues</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-neutral-500 mt-1">•</span>
+              <span class="text-neutral-300">Anyone who'd rather print a plan than pay for one</span>
+            </li>
+          </ul>
+
+          <p class="text-xl md:text-2xl font-bold text-neutral-200 mt-8 mb-4 text-center md:text-left">
+            Get unstuck. One block at a time.
+          </p>
+
+          <p class="text-lg text-neutral-400 mb-8 text-center md:text-left">
+            Paste your roadmap below and start building something real.
+          </p>
+        </div>
+      </div>
+
+      <div class="cta-section mt-8 flex flex-col items-center justify-center">
+        <a href="#editor"
+           class="inline-block bg-neutral-900 text-white font-bold text-lg py-3 px-6 rounded-2xl hover:bg-neutral-800 border border-neutral-700 transition">
+           Let's guilt-trip your roadmap into existence
+        </a>
+        <p class="text-sm text-neutral-500 mt-6 text-center md:text-left max-w-2xl">
+          <a href="https://roadblocks.app/index/index.html" class="text-neutral-400 hover:text-neutral-200 underline underline-offset-2 transition">Startup terms got you sideways? Browse the A–Z glossary.</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FULL APP SECTION -->
+  <section id="editor" class="py-24 bg-neutral-900">
+    <div class="app-container">
+      <!-- Header -->
+      <header class="app-header">
+        <div class="header-content">
+          <h1 class="app-title">Roadblocks.app</h1>
+          <div class="header-controls">
+            <button id="direction-toggle" class="btn btn-secondary" title="Toggle roadmap direction">
+              <span class="direction-icon">↑</span>
+              <span class="direction-text">Bottom to Top</span>
+            </button>
+            <button id="save-roadmap" class="btn btn-primary">Save</button>
+            <button id="load-roadmap" class="btn btn-secondary">Load</button>
+            <button id="export-pdf" class="btn btn-success">Export PDF</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Text Input Section -->
+        <section class="input-section">
+          <div class="input-container">
+            <label for="text-input" class="input-label">
+              Drop in your roadmap text, watch it auto-split into draggable blocks, rearrange the pieces with a drag-and-drop, set deadlines and print it out for your fridge door — because your next road to success starts with blocks you can move around and see every day.
+            </label>
+            <textarea
+              id="text-input"
+              class="text-input"
+              placeholder="Example:&#10;1. Research market trends&#10;2. Create wireframes&#10;3. Develop MVP&#10;4. Launch beta version&#10;5. Gather user feedback"
+              rows="6"
+            ></textarea>
+            <div class="input-actions">
+              <button id="parse-text" class="btn btn-primary">Parse into Milestones</button>
+              <button id="clear-all" class="btn btn-danger">Clear All</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Roadmap Section -->
+        <section class="roadmap-section">
+          <div class="roadmap-header">
+            <h2 id="roadmap-title" class="roadmap-title">My Roadmap</h2>
+            <input type="text" id="title-input" class="title-input" value="My Roadmap" style="display: none;">
+          </div>
+
+          <div class="bulk-actions-toolbar">
+            <div class="bulk-actions-content">
+              <label class="bulk-checkbox-label">
+                <input type="checkbox" id="select-all-checkbox" class="bulk-checkbox">
+                <span>Select All</span>
+              </label>
+              <select id="bulk-category-select" class="bulk-category-select">
+                <option value="">Change All Categories To...</option>
+                <option value="planning">Planning</option>
+                <option value="development">Development</option>
+                <option value="testing">Testing</option>
+                <option value="launch">Launch</option>
+              </select>
+              <button id="mark-selected-complete" class="btn btn-success">Mark Selected as Completed</button>
+            </div>
+          </div>
+
+          <div id="roadmap-container" class="roadmap-container">
+            <div id="milestones-list" class="milestones-list">
+              <!-- Milestones will be dynamically added here -->
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Hidden file input for loading -->
+      <input type="file" id="file-input" accept=".json" style="display: none;">
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-10 bg-neutral-950 text-center text-neutral-500 text-sm border-t border-neutral-800">
+    <p>🧱 Roadblocks.app — Drag blocks. Move dreams. Ship stuff. That's it. That's the app. No fluff, no features you'll never use.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/parser.js"></script>
+  <script src="js/dragdrop.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/pdf-export.js"></script>
+
 </body>
 </html>
