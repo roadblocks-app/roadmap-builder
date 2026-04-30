@@ -139,9 +139,10 @@ body {
     border: 2px solid #e5e7eb;
     border-radius: 0.375rem;
     font-size: 0.875rem;
-    color: #111827;
-    background-color: #ffffff;
-    caret-color: #111827;
+    color: #000000 !important;
+    background-color: #ffffff !important;
+    caret-color: #000000;
+    -webkit-text-fill-color: #000000;
     resize: vertical;
     transition: border-color 0.2s ease;
 }
